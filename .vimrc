@@ -6,18 +6,10 @@
 " ============================================================
 
 " ============================================================
-" This is from the vim-unimpaired package by t-pope - these 
-" commands are available and are awesome for line manipulations
-" ============================================================
-
-" There are mappings which are simply short normal mode aliases for commonly used ex commands. ]q is :cnext. [q is :cprevious. ]a is :next. [b is :bprevious. See the documentation for the full set of 20 mappings and mnemonics. All of them take a count.
-
-" There are linewise mappings. [<Space> and ]<Space> add newlines before and after the cursor line. [e and ]e exchange the current line with the one above or below it.
-
-" There are mappings for toggling options. [os, ]os, and yos perform :set spell, :set nospell, and :set invspell, respectively.
-
-" ============================================================
 " This is from the sensible package from t-pope!!!
+" These aim to be options that are non-confrontational at 
+" worst and useful at best and can be downloaded as a base
+" for the vimrc file between two people
 " ============================================================
  " sensible.vim - Defaults everyone can agree on
  " " Maintainer:   Tim Pope <http://tpo.pe/>
@@ -226,3 +218,69 @@ hi SpellBad guibg=#ff0000 ctermbg=009
 " gcap to comment out a paragraph
 " gc<movement> to comment out a movement
 " gc while in visual mode to comment out a bunch of text 
+
+" =================================================================
+" This is from the vim-unimpaired package by t-pope - these 
+" commands are available and are awesome for line manipulations
+" The great majority of these commands were taken from the following 
+" doc:
+" https://raw.githubusercontent.com/tpope/vim-unimpaired/master/doc/unimpaired.txt
+" and the site is located here:
+" https://github.com/tpope/vim-unimpaired
+" =================================================================
+
+" There are mappings which are simply short normal mode aliases for commonly used ex commands. ]q is :cnext. [q is :cprevious. ]a is :next. [b is :bprevious. See the documentation for the full set of 20 mappings and mnemonics. All of them take a count.
+
+" There are linewise mappings. [<Space> and ]<Space> add newlines before and after the cursor line. [e and ]e exchange the current line with the one above or below it.
+
+" There are mappings for toggling options. [os, ]os, and yos perform :set spell, :set nospell, and :set invspell, respectively.
+
+" OPTION TOGGLING                                 *unimpaired-toggling*
+
+" On  Off Toggle  Option
+" *[ob*   *]ob*   *yob*   'background' (dark is off, light is on)
+" *[oc*   *]oc*   *yoc*   'cursorline'
+" *[od*   *]od*   *yod*   'diff' (actually |:diffthis| / |:diffoff|)
+" *[oh*   *]oh*   *yoh*   'hlsearch'
+" *[oi*   *]oi*   *yoi*   'ignorecase'
+" *[ol*   *]ol*   *yol*   'list'
+" *[on*   *]on*   *yon*   'number'
+" *[or*   *]or*   *yor*   'relativenumber'
+" *[os*   *]os*   *yos*   'spell'
+" *[ou*   *]ou*   *you*   'cursorcolumn'
+" *[ov*   *]ov*   *yov*   'virtualedit'
+" *[ow*   *]ow*   *yow*   'wrap'
+" *[ox*   *]ox*   *yox*   'cursorline' 'cursorcolumn' (x as in crosshairs)
+
+" NEXT AND PREVIOUS                               *unimpaired-next*
+
+" The following maps all correspond to normal mode commands.  If a count is
+" given, it becomes an argument to the command.  A mnemonic for the "a" commands
+" is "args" and for the "q" commands is "quickfix".
+
+" *[a*     |:previous|
+" *]a*     |:next|
+" *[A*     |:first|
+" *]A*     |:last|
+" *[b*     |:bprevious|
+" *]b*     |:bnext|
+" *[B*     |:bfirst|
+" *]B*     |:blast|
+" *[l*     |:lprevious|
+" *]l*     |:lnext|
+" *[L*     |:lfirst|
+" *]L*     |:llast|
+" *[<C-L>* |:lpfile|
+" *]<C-L>* |:lnfile|
+" *[q*     |:cprevious|
+" *]q*     |:cnext|
+" *[Q*     |:cfirst|
+" *]Q*     |:clast|
+" *[<C-Q>* |:cpfile| (Note that <C-Q> only works in a terminal if you disable
+" *]<C-Q>* |:cnfile| flow control: stty -ixon)
+" *[t*     |:tprevious|
+" *]t*     |:tnext|
+" *[T*     |:tfirst|
+" *]T*     |:tlast|
+" *[<C-T>* |:ptprevious|
+" *]<C-T>* |:ptnext|
