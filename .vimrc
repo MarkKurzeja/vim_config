@@ -2,7 +2,19 @@
 " This is the list of my common mappings for writing files
 " In and out of the Vim language
 " Whoohoo!
+" Mark Kurzeja 2019
 " ============================================================
+
+" ============================================================
+" This is from the vim-unimpaired package by t-pope - these 
+" commands are available and are awesome for line manipulations
+" ============================================================
+
+" There are mappings which are simply short normal mode aliases for commonly used ex commands. ]q is :cnext. [q is :cprevious. ]a is :next. [b is :bprevious. See the documentation for the full set of 20 mappings and mnemonics. All of them take a count.
+
+" There are linewise mappings. [<Space> and ]<Space> add newlines before and after the cursor line. [e and ]e exchange the current line with the one above or below it.
+
+" There are mappings for toggling options. [os, ]os, and yos perform :set spell, :set nospell, and :set invspell, respectively.
 
 " ============================================================
 " This is from the sensible package from t-pope!!!
@@ -62,8 +74,7 @@ if &encoding ==# 'latin1' && has('gui_running')
 endif
 
 if &listchars ==# 'eol:$'
-    set listchars=tab:>\
-    ,trail:-,extends:>,precedes:<,nbsp:+
+    set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
 endif
 
 if v:version > 703 || v:version == 703 && has("patch541")
@@ -105,11 +116,6 @@ endif
 inoremap <C-U> <C-G>u<C-U>
 
 " vim:set ft=vim et sw=2:
-
-
-
-
-
 
 " =================================================================
 " For the tabbing that is required in python - it just happens 
@@ -175,10 +181,12 @@ inoremap :env<space> <esc>:-1read ~/vim_snips/enviroment<CR>7li
 " =================================================================
 " These are the commands for spelling turnon and off
 " =================================================================
+" For spelling you can use [s and ]s to get to the previous and next
+" spelling error respectively and you can use z= to find the 
+" alternative ways to spell something
 nnoremap :spellon :set spell spelllang=en_us
 nnoremap :spelloff :set nospell
 hi SpellBad guibg=#ff0000 ctermbg=009
-
 
 " =================================================================
 " Set the relative line numbers on
@@ -200,10 +208,10 @@ hi SpellBad guibg=#ff0000 ctermbg=009
 " Surrond ---------------------------------------------------------
 " https://github.com/tpope/vim-surround
 " You can use the cs key tag to change tags, ds to delete tags,
-" and <y|c>s<movement><surrond> to add / change the surronding 
+" and <y|c>s<movement><surround> to add / change the surrounding 
 " characters
 "
-" Take line of Hello World with curson positined over Hello
+" Take line of Hello World with cursor positioned over Hello
 " ysiw( => ( Hello ) World
 " yss) => (Hello World)
 " yss( => ( Hello World )
