@@ -5,6 +5,20 @@
 " Mark Kurzeja 2019
 " ============================================================
 
+" ======== Short list of useful commands ======== 
+
+" gq is used for reflowing lines including those with comments
+" [os can turn on spellchecking ]os turns if off
+" [oh turns on highlighting ]oh turns it off
+" dt. will delete everything up till the next period
+" f. will find the next period in the line ; and , will move through the line
+" ci) will change everything within the current parents
+" cs(] will change the current () text to [] text 
+" ds) will delete the current surronding ()
+" Highlight + S) will surrond the current selection with ()
+" [<space> will insert a blank line before the current line
+" [e will move the current line up one
+
 " ============================================================
 " This is from the sensible package from t-pope!!!
 " These aim to be options that are non-confrontational at 
@@ -142,10 +156,14 @@ set showbreak=>>
 
 " Given that the indenting makes moving around harder on a single
 " long line, you can remap the up and down keys to navigate inter-
-" line and not hop the entire line at a time
+" line and not hop the entire line at a time. The solution here
+" was found at:
+" https://www.reddit.com/r/vim/comments/2k4cbr/problem_with_gj_and_gk/
 
-nnoremap <buffer> k gk
-nnoremap <buffer> j gj
+" nnoremap k gk
+" nnoremap j gj
+nnoremap <expr> j v:count ? 'j' : 'gj'
+nnoremap <expr> k v:count ? 'k' : 'gk'
 
 " =================================================================
 " For quickly editing the VIMRC file - these come in handy a lot
@@ -153,10 +171,6 @@ nnoremap <buffer> j gj
 
 :nnoremap ec :vsp $MYVIMRC<CR> 
 :nnoremap sc :so $MYVIMRC<CR>
-
-" This is a custom file for the project that I am working on
-:nnoremap :run :w<esc> :!clear; python3 soln.py<esc>
-:nnoremap :test :w<esc> :!clear; python3 tests.py -v <esc>
 
 " Set numbering for each of the lines
 set number 
