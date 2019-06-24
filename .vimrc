@@ -144,8 +144,6 @@ set showbreak=>>
 " long line, you can remap the up and down keys to navigate inter-
 " line and not hop the entire line at a time
 
-" nnoremap k gk
-" nnoremap j gj
 nnoremap <buffer> k gk
 nnoremap <buffer> j gj
 
