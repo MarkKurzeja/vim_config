@@ -140,6 +140,15 @@ set breakindentopt=shift:0,min:40,sbr
 " append '>>' to indent
 set showbreak=>>   
 
+" Given that the indenting makes moving around harder on a single
+" long line, you can remap the up and down keys to navigate inter-
+" line and not hop the entire line at a time
+
+" nnoremap k gk
+" nnoremap j gj
+nnoremap <buffer> k gk
+nnoremap <buffer> j gj
+
 " =================================================================
 " For quickly editing the VIMRC file - these come in handy a lot
 " =================================================================
@@ -167,7 +176,7 @@ inoremap :rtopic<space> <esc>:-1read ~/vim_snips/rtopic<CR>14li
 inoremap :cdesc<space> <esc>:-1read ~/vim_snips/compactdesc<CR>j10li
 inoremap :cenum<space> <esc>:-1read ~/vim_snips/compactenum<CR>jA
 inoremap :citem<space> <esc>:-1read ~/vim_snips/compactitem<CR>jA
-inoremap :iim<space> <esc>:-1read ~/vim_snips/itemdesc<CR>kdd6li
+inoremap :iim<space> <esc>:-1read ~/vim_snips/itemdesc<CR>6li
 inoremap :env<space> <esc>:-1read ~/vim_snips/enviroment<CR>7li
 
 " =================================================================
@@ -197,7 +206,7 @@ hi SpellBad guibg=#ff0000 ctermbg=009
 " How to use the t-pope packages for vim
 " =================================================================
 
-" Surrond ---------------------------------------------------------
+" Surrond --------------------------------------------------------
 " https://github.com/tpope/vim-surround
 " You can use the cs key tag to change tags, ds to delete tags,
 " and <y|c>s<movement><surround> to add / change the surrounding 
@@ -211,6 +220,8 @@ hi SpellBad guibg=#ff0000 ctermbg=009
 " Take Line (Hello World) with cursor over Hello
 " dss) => Hello World
 " cs"' => 'Hello World'
+" 
+" If you highlight text, then you press S<brace char> to insert it
 
 " Commentary -----------------------------------------------------
 " https://github.com/tpope/vim-commentary
