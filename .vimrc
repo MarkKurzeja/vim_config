@@ -1,9 +1,19 @@
-" ============================================================
-" This is the list of my common mappings for writing files
-" In and out of the Vim language
-" Whoohoo!
+" ==========================================================================
+" This is the list of my common mappings for writing files In and out of the
+" Vim language Whoohoo!
 " Mark Kurzeja 2019
-" ============================================================
+" ==========================================================================
+
+" If you are cloning this for the first time, you need to run the following
+" commands once after downloading the files from git:
+" vim -u NONE -c "helptags !/.vim/pack/tpope/start/commentary/doc" -c q
+" vim -u NONE -c "helptags !/.vim/pack/tpope/start/surround/doc" -c q
+" vim -u NONE -c "helptags !/.vim/pack/tpope/start/unimpaired/doc" -c q
+" Doing this will ensure that the tpope scripts work as they should!
+
+" Set the background as dark so that the colors of the background do not blot
+" out the color of the blue
+set background=dark
 
 " ======== Short list of useful commands ======== 
 
@@ -19,15 +29,14 @@
 " [<space> will insert a blank line before the current line
 " [e will move the current line up one
 
-" ============================================================
-" This is from the sensible package from t-pope!!!
-" These aim to be options that are non-confrontational at 
-" worst and useful at best and can be downloaded as a base
-" for the vimrc file between two people
-" ============================================================
- " sensible.vim - Defaults everyone can agree on
- " " Maintainer:   Tim Pope <http://tpo.pe/>
- " " Version:      1.2
+" ==========================================================================
+" This is from the sensible package from t-pope!!!  These aim to be options
+" that are non-confrontational at worst and useful at best and can be
+" downloaded as a base for the vimrc file between two people
+" ==========================================================================
+" sensible.vim - Defaults everyone can agree on
+" " Maintainer:   Tim Pope <http://tpo.pe/>
+" " Version:      1.2
 " https://raw.githubusercontent.com/tpope/vim-sensible/master/plugin/sensible.vim
 
  if exists('g:loaded_sensible') || &compatible
@@ -123,10 +132,10 @@ inoremap <C-U> <C-G>u<C-U>
 
 " vim:set ft=vim et sw=2:
 
-" =================================================================
-" For the tabbing that is required in python - it just happens 
-" To work nice for generic documents! :)
-" =================================================================
+" ==========================================================================
+" For the tabbing that is required in python - it just happens To work nice
+" for generic documents! :)
+" ==========================================================================
 
 set autoindent
 filetype plugin indent on
@@ -138,10 +147,10 @@ set shiftwidth=4
 set expandtab
 set softtabstop=4
 
-" =================================================================
-" Enabling the smart indent showings so that line wraps are in the 
-" same line as their indentation
-" =================================================================
+" ==========================================================================
+" Enabling the smart indent showings so that line wraps are in the same line
+" as their indentation
+" ==========================================================================
 " enable indentation
 set breakindent
 set linebreak
@@ -154,10 +163,9 @@ set breakindentopt=shift:0,min:40,sbr
 " append '>>' to indent
 set showbreak=>>   
 
-" Given that the indenting makes moving around harder on a single
-" long line, you can remap the up and down keys to navigate inter-
-" line and not hop the entire line at a time. The solution here
-" was found at:
+" Given that the indenting makes moving around harder on a single long line,
+" you can remap the up and down keys to navigate inter- line and not hop the
+" entire line at a time. The solution here was found at:
 " https://www.reddit.com/r/vim/comments/2k4cbr/problem_with_gj_and_gk/
 
 " nnoremap k gk
@@ -165,9 +173,9 @@ set showbreak=>>
 nnoremap <expr> j v:count ? 'j' : 'gj'
 nnoremap <expr> k v:count ? 'k' : 'gk'
 
-" =================================================================
+" ==========================================================================
 " For quickly editing the VIMRC file - these come in handy a lot
-" =================================================================
+" ==========================================================================
 
 :nnoremap ec :vsp $MYVIMRC<CR> 
 :nnoremap sc :so $MYVIMRC<CR>
@@ -179,9 +187,9 @@ set number
 :set hlsearch
 :nnoremap :offhigh :nohlsearch<CR>
 
-" =================================================================
+" ==========================================================================
 " This is all of the snips that I have for insertion
-" =================================================================
+" ==========================================================================
 
 inoremap :topic<space> <esc>:-1read ~/vim_snips/topic<CR>14li
 inoremap :rtopic<space> <esc>:-1read ~/vim_snips/rtopic<CR>14li
@@ -191,19 +199,19 @@ inoremap :citem<space> <esc>:-1read ~/vim_snips/compactitem<CR>jA
 inoremap :iim<space> <esc>:-1read ~/vim_snips/itemdesc<CR>6li
 inoremap :env<space> <esc>:-1read ~/vim_snips/enviroment<CR>7li
 
-" =================================================================
+" ==========================================================================
 " These are the commands for spelling turnon and off
-" =================================================================
-" For spelling you can use [s and ]s to get to the previous and next
-" spelling error respectively and you can use z= to find the 
-" alternative ways to spell something
+" ==========================================================================
+" For spelling you can use [s and ]s to get to the previous and next spelling
+" error respectively and you can use z= to find the alternative ways to spell
+" something
 nnoremap :spellon :set spell spelllang=en_us
 nnoremap :spelloff :set nospell
 hi SpellBad guibg=#ff0000 ctermbg=009
 
-" =================================================================
+" ==========================================================================
 " Set the relative line numbers on
-" =================================================================
+" ==========================================================================
 " turn hybrid line numbers on
 :set number relativenumber
 :set nu rnu
@@ -214,9 +222,9 @@ hi SpellBad guibg=#ff0000 ctermbg=009
 " :set number! relativenumber!
 " :set nu! rnu!s
 
-" =================================================================
+" ==========================================================================
 " How to use the t-pope packages for vim
-" =================================================================
+" ==========================================================================
 
 " Surrond --------------------------------------------------------
 " https://github.com/tpope/vim-surround
@@ -242,21 +250,26 @@ hi SpellBad guibg=#ff0000 ctermbg=009
 " gc<movement> to comment out a movement
 " gc while in visual mode to comment out a bunch of text 
 
-" =================================================================
-" This is from the vim-unimpaired package by t-pope - these 
-" commands are available and are awesome for line manipulations
-" The great majority of these commands were taken from the following 
-" doc:
+" ==========================================================================
+" This is from the vim-unimpaired package by t-pope - these commands are
+" available and are awesome for line manipulations The great majority of these
+" commands were taken from the following doc:
 " https://raw.githubusercontent.com/tpope/vim-unimpaired/master/doc/unimpaired.txt
 " and the site is located here:
 " https://github.com/tpope/vim-unimpaired
-" =================================================================
+" ==========================================================================
 
-" There are mappings which are simply short normal mode aliases for commonly used ex commands. ]q is :cnext. [q is :cprevious. ]a is :next. [b is :bprevious. See the documentation for the full set of 20 mappings and mnemonics. All of them take a count.
+" There are mappings which are simply short normal mode aliases for commonly
+" used ex commands. ]q is :cnext. [q is :cprevious. ]a is :next. [b is
+" :bprevious. See the documentation for the full set of 20 mappings and
+" mnemonics. All of them take a count.
 
-" There are linewise mappings. [<Space> and ]<Space> add newlines before and after the cursor line. [e and ]e exchange the current line with the one above or below it.
+" There are linewise mappings. [<Space> and ]<Space> add newlines before and
+" after the cursor line. [e and ]e exchange the current line with the one
+" above or below it.
 
-" There are mappings for toggling options. [os, ]os, and yos perform :set spell, :set nospell, and :set invspell, respectively.
+" There are mappings for toggling options. [os, ]os, and yos perform :set
+" spell, :set nospell, and :set invspell, respectively.
 
 " OPTION TOGGLING                                 *unimpaired-toggling*
 
