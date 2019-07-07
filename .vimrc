@@ -18,6 +18,7 @@ set background=dark
 " ======== Short list of useful commands ======== 
 
 " gq is used for reflowing lines including those with comments
+" % is for going to the matching brace
 " [os can turn on spellchecking ]os turns if off
 " [oh turns on highlighting ]oh turns it off
 " dt. will delete everything up till the next period
