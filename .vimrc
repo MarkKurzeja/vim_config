@@ -13,7 +13,116 @@
 
 " Set the background as dark so that the colors of the background do not blot
 " out the color of the blue
-set background=dark
+" set background=dark
+
+" Some of the custom color settings:
+" highlight <group> <attribute>=<value>
+" Group is one of:
+"
+" *Comment  any comment
+
+" *Constant any constant
+"     String       a string constant: "this is a string"
+"     Character    a character constant: 'c', '\n'
+"     Number       a number constant: 234, 0xff
+"     Boolean      a boolean constant: TRUE, false
+"     Float        a floating point constant: 2.3e10
+
+" *Identifier      any variable name
+"     Function     function name (also: methods for classes)
+
+" *Statement       any statement
+"     Conditional  if, then, else, endif, switch, etc.
+"     Repeat       for, do, while, etc.
+"     Label        case, default, etc.
+"     Operator     "sizeof", "+", "*", etc.
+"     Keyword      any other keyword
+"     Exception    try, catch, throw
+
+" *PreProc         generic Preprocessor
+"     Include      preprocessor #include
+"     Define       preprocessor #define
+"     Macro        same as Define
+"     PreCondit    preprocessor #if, #else, #endif, etc.
+
+" *Type            int, long, char, etc.
+"     StorageClass static, register, volatile, etc.
+"     Structure    struct, union, enum, etc.
+"     Typedef      A typedef
+
+" *Special         any special symbol
+"     SpecialChar   special character in a constant
+"     Tag          you can use CTRL-] on this
+"     Delimiter    character that needs attention
+"     SpecialComment special things inside a comment
+"     Debug        debugging statements
+
+" *Underlined      text that stands out, HTML links
+
+" *Ignore          left blank, hidden  |hl-Ignore|
+
+" *Error           any erroneous construct
+
+" *Todo            anything that needs extra attention;
+"                  mostly the
+"                  keywords TODO FIXME and XXX
+"
+" and attributes are one of ctermbg and ctermfg (for background and
+" foreground)
+" Colors are one of: 
+" NR-16   NR-8    COLOR NAME 
+" 0       0       Black
+" 1       4       DarkBlue
+" 2       2       DarkGreen
+" 3       6       DarkCyan
+" 4       1       DarkRed
+" 5       5       DarkMagenta
+" 6       3       Brown, DarkYellow
+" 7       7       LightGray, LightGrey, Gray, Grey
+" 8       0*      DarkGray, DarkGrey
+" 9       4*      Blue, LightBlue
+" 10      2*      Green, LightGreen
+" 11      6*      Cyan, LightCyan
+" 12      1*      Red, LightRed
+" 13      5*      Magenta, LightMagenta
+" 14      3*      Yellow, LightYellow
+" 15      7*      White
+" You can also use the numbers from this:
+" https://upload.wikimedia.org/wikipedia/commons/1/15/Xterm_256color_chart.svg
+highlight Comment ctermbg=Black ctermfg=040
+highlight Constant ctermbg=Black ctermfg=033
+highlight Identifier ctermbg=Black ctermfg=White
+highlight Statement ctermbg=Black ctermfg=White
+highlight PreProc ctermbg=Black ctermfg=027
+highlight Type ctermbg=Black ctermfg=033
+highlight Special ctermbg=Black ctermfg=White
+highlight Underlined ctermbg=Black ctermfg=033
+highlight Todo ctermbg=Black ctermfg=Red
+" highlight Constant ctermbg=Black ctermfg=White
+" highlight Normal ctermbg=Black ctermfg=White
+" highlight Normal ctermbg=Black ctermfg=White
+" highlight Normal ctermbg=Black ctermfg=White
+" highlight Identifier ctermbg=Black ctermfg=White
+" highlight Constant ctermbg=Black ctermfg=White
+" highlight Special ctermbg=Black ctermfg=White
+" highlight Comment ctermbg=Black ctermfg=White
+" highlight NonText ctermbg=Black ctermfg=White
+" highlight Cursor ctermbg=Black ctermfg=White
+highlight String ctermbg=Black ctermfg=040
+" highlight Boolean ctermbg=Black ctermfg=White
+" highlight Float ctermbg=Black ctermfg=White
+" highlight Number ctermbg=Black ctermfg=White
+" highlight Conditional ctermbg=Black ctermfg=White
+" highlight Label ctermbg=Black ctermfg=White
+" highlight Operator ctermbg=Black ctermfg=White
+" highlight Keyword ctermbg=Black ctermfg=White
+" highlight Exception ctermbg=Black ctermfg=White
+" highlight Operator ctermbg=Black ctermfg=White
+" highlight SpecialChar ctermbg=Black ctermfg=White
+" highlight Todo ctermbg=Black ctermfg=White
+" highlight Special ctermbg=Black ctermfg=White
+syntax enable
+" highlight Constant ctermbg=Black ctermfg=LightBlue
 
 " ======== Short list of useful commands ======== 
 
