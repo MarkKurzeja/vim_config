@@ -18,6 +18,10 @@
 " Highlight + S) will surrond the current selection with ()
 " [<space> will insert a blank line before the current line
 " [e will move the current line up one
+" gt and gT will cycle between tabs
+" :vsp will open up a new window in vertical split
+" ^w < will go to the left in a vertical split
+" ^I for beginning to edit at the beginning of a line
 
 " ============================================================
 " This is from the sensible package from t-pope!!!
@@ -171,6 +175,9 @@ nnoremap <expr> k v:count ? 'k' : 'gk'
 
 :nnoremap ec :vsp $MYVIMRC<CR> 
 :nnoremap sc :so $MYVIMRC<CR>
+
+" Functions for testing the payment modules
+:nnoremap :test :w<esc> :!clear; python3 test.py -v <esc>
 
 " Set numbering for each of the lines
 set number 
