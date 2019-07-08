@@ -11,6 +11,35 @@
 " vim -u NONE -c "helptags !/.vim/pack/tpope/start/unimpaired/doc" -c q
 " Doing this will ensure that the tpope scripts work as they should!
 
+" ======== Short list of useful commands ======== 
+
+" ^I for beginning to edit at the beginning of a line
+" zf folds the current selection, za toggles folds
+" m<letter> sets a bookmark for letter
+" `<letter> goes to a bookmark set
+" :mark shows all of your bookmarks
+" :delm! | delm A-Z0-9 to delete all marks
+" :Vexplore (:Vex) opens up the file explorer - use enter to go into a file
+" gq is used for reflowing lines including those with comments
+" % is for going to the matching brace
+" [os can turn on spellchecking ]os turns if off
+" [oh turns on highlighting ]oh turns it off
+" dt. will delete everything up till the next period
+" f. will find the next period in the line ; and , will move through the line
+" ci) will change everything within the current parents
+" cs(] will change the current () text to [] text 
+" ds) will delete the current surronding ()
+" Highlight + S) will surrond the current selection with ()
+" [<space> will insert a blank line before the current line
+" [e will move the current line up one
+" gt and gT will cycle between tabs
+" :vsp will open up a new window in vertical split
+" ^w < will go to the left in a vertical split
+
+
+" ==========================================================================
+" Specify the colors for the formatting of files
+" ==========================================================================
 " Set the background as dark so that the colors of the background do not blot
 " out the color of the blue
 " set background=dark
@@ -89,59 +118,40 @@
 " 15      7*      White
 " You can also use the numbers from this:
 " https://upload.wikimedia.org/wikipedia/commons/1/15/Xterm_256color_chart.svg
-highlight Comment ctermbg=Black ctermfg=040
-highlight Constant ctermbg=Black ctermfg=033
-highlight Identifier ctermbg=Black ctermfg=White
-highlight Statement ctermbg=Black ctermfg=White
-highlight PreProc ctermbg=Black ctermfg=027
-highlight Type ctermbg=Black ctermfg=033
-highlight Special ctermbg=Black ctermfg=White
-highlight Underlined ctermbg=Black ctermfg=033
-highlight Todo ctermbg=Black ctermfg=Red
-" highlight Constant ctermbg=Black ctermfg=White
-" highlight Normal ctermbg=Black ctermfg=White
-" highlight Normal ctermbg=Black ctermfg=White
-" highlight Normal ctermbg=Black ctermfg=White
-" highlight Identifier ctermbg=Black ctermfg=White
-" highlight Constant ctermbg=Black ctermfg=White
-" highlight Special ctermbg=Black ctermfg=White
-" highlight Comment ctermbg=Black ctermfg=White
-" highlight NonText ctermbg=Black ctermfg=White
-" highlight Cursor ctermbg=Black ctermfg=White
-highlight String ctermbg=Black ctermfg=040
-" highlight Boolean ctermbg=Black ctermfg=White
-" highlight Float ctermbg=Black ctermfg=White
-" highlight Number ctermbg=Black ctermfg=White
-" highlight Conditional ctermbg=Black ctermfg=White
-" highlight Label ctermbg=Black ctermfg=White
-" highlight Operator ctermbg=Black ctermfg=White
-" highlight Keyword ctermbg=Black ctermfg=White
-" highlight Exception ctermbg=Black ctermfg=White
-" highlight Operator ctermbg=Black ctermfg=White
-" highlight SpecialChar ctermbg=Black ctermfg=White
-" highlight Todo ctermbg=Black ctermfg=White
-" highlight Special ctermbg=Black ctermfg=White
-syntax enable
-" highlight Constant ctermbg=Black ctermfg=LightBlue
-
-" ======== Short list of useful commands ======== 
-
-" gq is used for reflowing lines including those with comments
-" % is for going to the matching brace
-" [os can turn on spellchecking ]os turns if off
-" [oh turns on highlighting ]oh turns it off
-" dt. will delete everything up till the next period
-" f. will find the next period in the line ; and , will move through the line
-" ci) will change everything within the current parents
-" cs(] will change the current () text to [] text 
-" ds) will delete the current surronding ()
-" Highlight + S) will surrond the current selection with ()
-" [<space> will insert a blank line before the current line
-" [e will move the current line up one
-" gt and gT will cycle between tabs
-" :vsp will open up a new window in vertical split
-" ^w < will go to the left in a vertical split
-" ^I for beginning to edit at the beginning of a line
+" Turn the one to a zero if you want a white background
+:if 1
+    highlight Comment ctermbg=Black ctermfg=040
+    highlight Constant ctermbg=Black ctermfg=033
+    highlight Identifier ctermbg=Black ctermfg=White
+    highlight Statement ctermbg=Black ctermfg=White
+    highlight PreProc ctermbg=Black ctermfg=027
+    highlight Type ctermbg=Black ctermfg=033
+    highlight Special ctermbg=Black ctermfg=040
+    highlight Underlined ctermbg=Black ctermfg=033
+    highlight Todo ctermbg=Black ctermfg=Red
+    highlight String ctermbg=Black ctermfg=040
+    highlight Normal ctermbg=Black ctermfg=White
+    " highlight NonText ctermbg=Black ctermfg=White
+    " highlight Cursor ctermbg=Black ctermfg=White
+    syntax enable
+    " highlight Constant ctermbg=Black ctermfg=LightBlue
+:else
+    highlight Comment ctermbg=White ctermfg=040
+    highlight Constant ctermbg=White ctermfg=033
+    highlight Identifier ctermbg=White ctermfg=Black
+    highlight Statement ctermbg=White ctermfg=Black
+    highlight PreProc ctermbg=White ctermfg=027
+    highlight Type  ctermbg=White ctermfg=033
+    highlight Special ctermbg=White ctermfg=040
+    highlight Underlined ctermbg=White ctermfg=033
+    highlight Todo ctermbg=White ctermfg=Red
+    highlight String ctermbg=White ctermfg=040
+    highlight Normal ctermbg=White ctermfg=Black
+    " highlight NonText ctermbg=Black ctermfg=White
+    " highlight Cursor ctermbg=Black ctermfg=White
+    syntax enable
+    " highlight Constant ctermbg=Black ctermfg=LightBlue
+:endif
 
 " ==========================================================================
 " This is from the sensible package from t-pope!!!  These aim to be options
@@ -159,7 +169,7 @@ else
     let g:loaded_sensible = 'yes'
 endif
 
- if has('autocmd')
+if has('autocmd')
    filetype plugin indent on
 endif
 if has('syntax') && !exists('g:syntax_on')
