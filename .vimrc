@@ -13,8 +13,13 @@
 
 " ======== Short list of useful commands ======== 
 
+" zt for pushing the screen, at the cursor to the top
+" zb for pushing the screen, at the cursor to the bottom
 " ^I for beginning to edit at the beginning of a line
-" zf folds the current selection, za toggles folds
+" zf folds the current selection 
+" za toggles folds
+" zd deletes the current fold
+" zD deletes the current fold and all sub folds
 " m<letter> sets a bookmark for letter
 " `<letter> goes to a bookmark set
 " :mark shows all of your bookmarks
@@ -126,15 +131,12 @@
     highlight Statement ctermbg=Black ctermfg=White
     highlight PreProc ctermbg=Black ctermfg=027
     highlight Type ctermbg=Black ctermfg=033
-    highlight Special ctermbg=Black ctermfg=040
+    highlight Special ctermbg=Black ctermfg=White
     highlight Underlined ctermbg=Black ctermfg=033
     highlight Todo ctermbg=Black ctermfg=Red
     highlight String ctermbg=Black ctermfg=040
     highlight Normal ctermbg=Black ctermfg=White
-    " highlight NonText ctermbg=Black ctermfg=White
-    " highlight Cursor ctermbg=Black ctermfg=White
     syntax enable
-    " highlight Constant ctermbg=Black ctermfg=LightBlue
 :else
     highlight Comment ctermbg=White ctermfg=040
     highlight Constant ctermbg=White ctermfg=033
@@ -142,16 +144,16 @@
     highlight Statement ctermbg=White ctermfg=Black
     highlight PreProc ctermbg=White ctermfg=027
     highlight Type  ctermbg=White ctermfg=033
-    highlight Special ctermbg=White ctermfg=040
+    highlight Special ctermbg=White ctermfg=Black
     highlight Underlined ctermbg=White ctermfg=033
     highlight Todo ctermbg=White ctermfg=Red
     highlight String ctermbg=White ctermfg=040
     highlight Normal ctermbg=White ctermfg=Black
-    " highlight NonText ctermbg=Black ctermfg=White
-    " highlight Cursor ctermbg=Black ctermfg=White
     syntax enable
-    " highlight Constant ctermbg=Black ctermfg=LightBlue
 :endif
+" highlight NonText ctermbg=Black ctermfg=White
+" highlight Cursor ctermbg=Black ctermfg=White
+" highlight Constant ctermbg=Black ctermfg=LightBlue
 
 " ==========================================================================
 " This is from the sensible package from t-pope!!!  These aim to be options
@@ -163,7 +165,7 @@
 " " Version:      1.2
 " https://raw.githubusercontent.com/tpope/vim-sensible/master/plugin/sensible.vim
 
- if exists('g:loaded_sensible') || &compatible
+if exists('g:loaded_sensible') || &compatible
    finish
 else
     let g:loaded_sensible = 'yes'
@@ -292,8 +294,6 @@ set showbreak=>>
 " entire line at a time. The solution here was found at:
 " https://www.reddit.com/r/vim/comments/2k4cbr/problem_with_gj_and_gk/
 
-" nnoremap k gk
-" nnoremap j gj
 nnoremap <expr> j v:count ? 'j' : 'gj'
 nnoremap <expr> k v:count ? 'k' : 'gk'
 
@@ -313,6 +313,9 @@ set number
 " Set highlighting for searching and a command to turn it off quickly
 :set hlsearch
 :nnoremap :offhigh :nohlsearch<CR>
+
+" Ensure that folding is only done on manual selections
+:setlocal foldmethod=manual
 
 " ==========================================================================
 " This is all of the snips that I have for insertion
