@@ -6,7 +6,8 @@
 "
 
 " If you are cloning this for the first time, you need to run the following
-" commands once after downloading the files from git:
+" commands once after downloading the files from git (if you cloned this
+" repository then you shouldn't have any issues with this):
 " vim -u NONE -c "helptags !/.vim/pack/tpope/start/commentary/doc" -c q
 " vim -u NONE -c "helptags !/.vim/pack/tpope/start/surround/doc" -c q
 " vim -u NONE -c "helptags !/.vim/pack/tpope/start/unimpaired/doc" -c q
@@ -24,9 +25,13 @@ nnoremap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>
 set showmode
 
+" For backspacing a word at a time, remap ^w to ^<backspace>
+noremap! <C-BS> <C-W>
+noremap! <C-h> <C-W>
+
 " For coding in languages with the autocomplete brace, this will save quite a
 " lot of time ! :)
-:inoremap {<CR> {<CR>}<esc>O<tab>
+:inoremap {<CR> {<CR>}<esc>O
 
 " For quickly editing the VIMRC file - these allow you to quickly improve the
 " editor and get the hell out!
@@ -35,13 +40,6 @@ set showmode
 
 " Functions for testing the payment modules
 :nnoremap :test :w<esc> :!clear; python3 test.py -v <esc>
-
-" Set numbering for each of the lines
-" set number 
-
-" Set highlighting for searching and a command to turn it off quickly
-" :set hlsearch
-" :nnoremap :offhigh :nohlsearch<CR>
 
 " Ensure that folding is only done on manual selections
 :setlocal foldmethod=manual
@@ -70,6 +68,8 @@ inoremap :env<space> <esc>:-1read ~/vim_snips/enviroment<CR>7li
 
 " ======== Short list of useful commands ======== 
 
+" Use the { and } keys to move around paragraphs
+" ^<BS> while in insert mode, will delete the last word
 " Use ^l/^h to go to the window to the right/left using new bindings
 " Use D to delete to EOL and C to change to EOL
 " For spelling you can use [s and ]s to get to the previous and next spelling
@@ -88,7 +88,7 @@ inoremap :env<space> <esc>:-1read ~/vim_snips/enviroment<CR>7li
 " :mark shows all of your bookmarks
 " :delm! | delm A-Z0-9 to delete all marks
 " :Vexplore (:Vex) opens up the file explorer - use enter to go into a file
-" gq is used for reflowing lines including those with comments
+" gq is used for re-flowing lines including those with comments
 " % is for going to the matching brace
 " [os can turn on spellchecking ]os turns if off
 " [oh turns on highlighting ]oh turns it off
@@ -96,8 +96,8 @@ inoremap :env<space> <esc>:-1read ~/vim_snips/enviroment<CR>7li
 " f. will find the next period in the line ; and , will move through the line
 " ci) will change everything within the current parents
 " cs(] will change the current () text to [] text 
-" ds) will delete the current surronding ()
-" Highlight + S) will surrond the current selection with ()
+" ds) will delete the current surrounding ()
+" Highlight + S) will surround the current selection with ()
 " [<space> will insert a blank line before the current line
 " [e will move the current line up one
 " gt and gT will cycle between tabs
@@ -494,11 +494,15 @@ nnoremap <expr> k v:count ? 'k' : 'gk'
 
 " ==========================================================================
 " The following commands load in the mustang colors and are necessary in order
-" to ensure that the background loads correctly on the first try
+" to ensure that the background loads correctly on the first try Don't use the
+" termguicolors option nor the t_ut option with my custom color schemes else
+" it will not work. You can use them safely with the mustang and nord sets
+" however
 " ==========================================================================
 " set termguicolors " Set the terminal to use every single color there is
-" set t_ut= " This option will prevent only half the background from preloading
+" The t_ut option will prevent only half the background from preloading
+" set t_ut= 
 " colorscheme mustang " A cool color option for general purpose coding
-colorscheme nord " One of the most beautiful color codings in fronst
+colorscheme nord " One of the most beautiful color codings in Frost Coloring
 " colorscheme mark_light
 " colorscheme mark_dark
