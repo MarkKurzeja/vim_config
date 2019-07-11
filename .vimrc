@@ -3,6 +3,7 @@
 " Vim language Whoohoo!
 " Mark Kurzeja 2019
 " ==========================================================================
+"
 
 " If you are cloning this for the first time, you need to run the following
 " commands once after downloading the files from git:
@@ -11,8 +12,70 @@
 " vim -u NONE -c "helptags !/.vim/pack/tpope/start/unimpaired/doc" -c q
 " Doing this will ensure that the tpope scripts work as they should!
 
+" ==========================================================================
+" Custom Commands!!!!
+" ==========================================================================
+
+" This must be first, because it changes other options as side effect
+set nocompatible
+
+" For pasting - use F2 to go into pasting mode! 
+nnoremap <F2> :set invpaste paste?<CR>
+set pastetoggle=<F2>
+set showmode
+
+" For coding in languages with the autocomplete brace, this will save quite a
+" lot of time ! :)
+:inoremap {<CR> {<CR>}<esc>O<tab>
+
+" For quickly editing the VIMRC file - these allow you to quickly improve the
+" editor and get the hell out!
+:nnoremap ec :vsp $MYVIMRC<CR> 
+:nnoremap sc :so $MYVIMRC<CR>
+
+" Functions for testing the payment modules
+:nnoremap :test :w<esc> :!clear; python3 test.py -v <esc>
+
+" Set numbering for each of the lines
+" set number 
+
+" Set highlighting for searching and a command to turn it off quickly
+" :set hlsearch
+" :nnoremap :offhigh :nohlsearch<CR>
+
+" Ensure that folding is only done on manual selections
+:setlocal foldmethod=manual
+
+" For making the syntax highlighting go faster (since this is what is slowing
+" down my machine right now!)
+" For future me - either you have to :set norelativenumbering or turn off
+" syntax highlighting to get the desired effect - it will be slow unless you
+" do these :(
+set nocursorcolumn
+set nocursorline
+syntax sync minlines=256
+set synmaxcol=120
+
+" ==========================================================================
+" This is all of the snips that I have for insertion
+" ==========================================================================
+
+inoremap :topic<space> <esc>:-1read ~/vim_snips/topic<CR>14li
+inoremap :rtopic<space> <esc>:-1read ~/vim_snips/rtopic<CR>14li
+inoremap :cdesc<space> <esc>:-1read ~/vim_snips/compactdesc<CR>j10li
+inoremap :cenum<space> <esc>:-1read ~/vim_snips/compactenum<CR>jA
+inoremap :citem<space> <esc>:-1read ~/vim_snips/compactitem<CR>jA
+inoremap :iim<space> <esc>:-1read ~/vim_snips/itemdesc<CR>6li
+inoremap :env<space> <esc>:-1read ~/vim_snips/enviroment<CR>7li
+
 " ======== Short list of useful commands ======== 
 
+" Use ^l/^h to go to the window to the right/left using new bindings
+" Use D to delete to EOL and C to change to EOL
+" For spelling you can use [s and ]s to get to the previous and next spelling
+" error respectively and you can use z= to find the alternative ways to spell
+" something
+" Turn on/off spelling with [os and ]os
 " zt for pushing the screen, at the cursor to the top
 " zb for pushing the screen, at the cursor to the bottom
 " ^I for beginning to edit at the beginning of a line
@@ -40,120 +103,6 @@
 " gt and gT will cycle between tabs
 " :vsp will open up a new window in vertical split
 " ^w < will go to the left in a vertical split
-
-
-" ==========================================================================
-" Specify the colors for the formatting of files
-" ==========================================================================
-" Set the background as dark so that the colors of the background do not blot
-" out the color of the blue
-" set background=dark
-
-" Some of the custom color settings:
-" highlight <group> <attribute>=<value>
-" Group is one of:
-"
-" *Comment  any comment
-
-" *Constant any constant
-"     String       a string constant: "this is a string"
-"     Character    a character constant: 'c', '\n'
-"     Number       a number constant: 234, 0xff
-"     Boolean      a boolean constant: TRUE, false
-"     Float        a floating point constant: 2.3e10
-
-" *Identifier      any variable name
-"     Function     function name (also: methods for classes)
-
-" *Statement       any statement
-"     Conditional  if, then, else, endif, switch, etc.
-"     Repeat       for, do, while, etc.
-"     Label        case, default, etc.
-"     Operator     "sizeof", "+", "*", etc.
-"     Keyword      any other keyword
-"     Exception    try, catch, throw
-
-" *PreProc         generic Preprocessor
-"     Include      preprocessor #include
-"     Define       preprocessor #define
-"     Macro        same as Define
-"     PreCondit    preprocessor #if, #else, #endif, etc.
-
-" *Type            int, long, char, etc.
-"     StorageClass static, register, volatile, etc.
-"     Structure    struct, union, enum, etc.
-"     Typedef      A typedef
-
-" *Special         any special symbol
-"     SpecialChar   special character in a constant
-"     Tag          you can use CTRL-] on this
-"     Delimiter    character that needs attention
-"     SpecialComment special things inside a comment
-"     Debug        debugging statements
-
-" *Underlined      text that stands out, HTML links
-
-" *Ignore          left blank, hidden  |hl-Ignore|
-
-" *Error           any erroneous construct
-
-" *Todo            anything that needs extra attention;
-"                  mostly the
-"                  keywords TODO FIXME and XXX
-"
-" and attributes are one of ctermbg and ctermfg (for background and
-" foreground)
-" Colors are one of: 
-" NR-16   NR-8    COLOR NAME 
-" 0       0       Black
-" 1       4       DarkBlue
-" 2       2       DarkGreen
-" 3       6       DarkCyan
-" 4       1       DarkRed
-" 5       5       DarkMagenta
-" 6       3       Brown, DarkYellow
-" 7       7       LightGray, LightGrey, Gray, Grey
-" 8       0*      DarkGray, DarkGrey
-" 9       4*      Blue, LightBlue
-" 10      2*      Green, LightGreen
-" 11      6*      Cyan, LightCyan
-" 12      1*      Red, LightRed
-" 13      5*      Magenta, LightMagenta
-" 14      3*      Yellow, LightYellow
-" 15      7*      White
-" You can also use the numbers from this:
-" https://upload.wikimedia.org/wikipedia/commons/1/15/Xterm_256color_chart.svg
-" Turn the one to a zero if you want a white background
-:if 1
-    highlight Comment ctermbg=Black ctermfg=040
-    highlight Constant ctermbg=Black ctermfg=033
-    highlight Identifier ctermbg=Black ctermfg=White
-    highlight Statement ctermbg=Black ctermfg=White
-    highlight PreProc ctermbg=Black ctermfg=027
-    highlight Type ctermbg=Black ctermfg=033
-    highlight Special ctermbg=Black ctermfg=White
-    highlight Underlined ctermbg=Black ctermfg=033
-    highlight Todo ctermbg=Black ctermfg=Red
-    highlight String ctermbg=Black ctermfg=040
-    highlight Normal ctermbg=Black ctermfg=White
-    syntax enable
-:else
-    highlight Comment ctermbg=White ctermfg=040
-    highlight Constant ctermbg=White ctermfg=033
-    highlight Identifier ctermbg=White ctermfg=Black
-    highlight Statement ctermbg=White ctermfg=Black
-    highlight PreProc ctermbg=White ctermfg=027
-    highlight Type  ctermbg=White ctermfg=033
-    highlight Special ctermbg=White ctermfg=Black
-    highlight Underlined ctermbg=White ctermfg=033
-    highlight Todo ctermbg=White ctermfg=Red
-    highlight String ctermbg=White ctermfg=040
-    highlight Normal ctermbg=White ctermfg=Black
-    syntax enable
-:endif
-" highlight NonText ctermbg=Black ctermfg=White
-" highlight Cursor ctermbg=Black ctermfg=White
-" highlight Constant ctermbg=Black ctermfg=LightBlue
 
 " ==========================================================================
 " This is from the sensible package from t-pope!!!  These aim to be options
@@ -256,22 +205,52 @@ endif
 
 inoremap <C-U> <C-G>u<C-U>
 
-" vim:set ft=vim et sw=2:
-
 " ==========================================================================
 " For the tabbing that is required in python - it just happens To work nice
 " for generic documents! :)
 " ==========================================================================
 
-set autoindent
-filetype plugin indent on
-" show existing tab with 4 spaces width
-set tabstop=4
-" when indenting with '>', use 4 spaces width
-set shiftwidth=4
-" On pressing tab, insert 4 spaces
-set expandtab
+" On pressing tab, insert 4 spaces for python files
+autocmd filetype python set expandtab
 set softtabstop=4
+
+" ==========================================================================
+" Little goodies from the following post - these are little shortcuts that
+" will make life a little easier
+" https://nvie.com/posts/how-i-boosted-my-vim/
+" ==========================================================================
+set hidden        " Hides buffers instead of closing them so if you have
+                  " unwritten changes to a file, you can open new files still
+set nowrap        " don't wrap lines
+set tabstop=4     " a tab is four spaces
+set backspace=indent,eol,start
+                    " allow backspacing over everything in insert mode
+set autoindent    " always set autoindenting on
+set copyindent    " copy the previous indentation on autoindenting
+set number        " always show line numbers
+set shiftwidth=4  " number of spaces to use for autoindenting
+set shiftround    " use multiple of shiftwidth when indenting with '<' and '>'
+set showmatch     " set show matching parenthesis
+set ignorecase    " ignore case when searching
+set smartcase     " ignore case if search pattern is all lowercase,
+                    "    case-sensitive otherwise
+set smarttab      " insert tabs on the start of a line according to
+                    "    shiftwidth, not tabstop
+set hlsearch      " highlight search terms
+set incsearch     " show search matches as you type
+
+set history=1000         " remember more commands and search history
+set undolevels=1000      " use many muchos levels of undo
+set wildignore=*.swp,*.bak,*.pyc,*.class
+set title                " change the terminal's title
+set visualbell           " don't beep
+set noerrorbells         " don't beep
+
+" Easy window navigation - don't have to use Ctrlw + l anymore
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
 
 " ==========================================================================
 " Enabling the smart indent showings so that line wraps are in the same line
@@ -293,70 +272,20 @@ set showbreak=>>
 " you can remap the up and down keys to navigate inter- line and not hop the
 " entire line at a time. The solution here was found at:
 " https://www.reddit.com/r/vim/comments/2k4cbr/problem_with_gj_and_gk/
-
 nnoremap <expr> j v:count ? 'j' : 'gj'
 nnoremap <expr> k v:count ? 'k' : 'gk'
-
-" ==========================================================================
-" For quickly editing the VIMRC file - these come in handy a lot
-" ==========================================================================
-
-:nnoremap ec :vsp $MYVIMRC<CR> 
-:nnoremap sc :so $MYVIMRC<CR>
-
-" Functions for testing the payment modules
-:nnoremap :test :w<esc> :!clear; python3 test.py -v <esc>
-
-" Set numbering for each of the lines
-set number 
-
-" Set highlighting for searching and a command to turn it off quickly
-:set hlsearch
-:nnoremap :offhigh :nohlsearch<CR>
-
-" Ensure that folding is only done on manual selections
-:setlocal foldmethod=manual
-
-" ==========================================================================
-" This is all of the snips that I have for insertion
-" ==========================================================================
-
-inoremap :topic<space> <esc>:-1read ~/vim_snips/topic<CR>14li
-inoremap :rtopic<space> <esc>:-1read ~/vim_snips/rtopic<CR>14li
-inoremap :cdesc<space> <esc>:-1read ~/vim_snips/compactdesc<CR>j10li
-inoremap :cenum<space> <esc>:-1read ~/vim_snips/compactenum<CR>jA
-inoremap :citem<space> <esc>:-1read ~/vim_snips/compactitem<CR>jA
-inoremap :iim<space> <esc>:-1read ~/vim_snips/itemdesc<CR>6li
-inoremap :env<space> <esc>:-1read ~/vim_snips/enviroment<CR>7li
-
-" ==========================================================================
-" These are the commands for spelling turnon and off
-" ==========================================================================
-" For spelling you can use [s and ]s to get to the previous and next spelling
-" error respectively and you can use z= to find the alternative ways to spell
-" something
-nnoremap :spellon :set spell spelllang=en_us
-nnoremap :spelloff :set nospell
-hi SpellBad guibg=#ff0000 ctermbg=009
 
 " ==========================================================================
 " Set the relative line numbers on
 " ==========================================================================
 " turn hybrid line numbers on
 :set number relativenumber
-:set nu rnu
-" turn hybrid line numbers off
-" :set nonumber norelativenumber
-" :set nonu nornu
-" " toggle hybrid line numbers
-" :set number! relativenumber!
-" :set nu! rnu!s
 
 " ==========================================================================
 " How to use the t-pope packages for vim
 " ==========================================================================
 
-" Surrond --------------------------------------------------------
+" Surround --------------------------------------------------------
 " https://github.com/tpope/vim-surround
 " You can use the cs key tag to change tags, ds to delete tags,
 " and <y|c>s<movement><surround> to add / change the surrounding 
@@ -450,3 +379,126 @@ hi SpellBad guibg=#ff0000 ctermbg=009
 " *]T*     |:tlast|
 " *[<C-T>* |:ptprevious|
 " *]<C-T>* |:ptnext|
+
+
+" ==========================================================================
+" Specify the colors for the formatting of files
+" ==========================================================================
+
+" Set the background as dark so that the colors of the background do not blot
+" out the color of the blue
+" set background=dark
+
+" Some of the custom color settings:
+" highlight <group> <attribute>=<value>
+" Group is one of:
+"
+" *Comment  any comment
+
+" *Constant any constant
+"     String       a string constant: "this is a string"
+"     Character    a character constant: 'c', '\n'
+"     Number       a number constant: 234, 0xff
+"     Boolean      a boolean constant: TRUE, false
+"     Float        a floating point constant: 2.3e10
+
+" *Identifier      any variable name
+"     Function     function name (also: methods for classes)
+
+" *Statement       any statement
+"     Conditional  if, then, else, endif, switch, etc.
+"     Repeat       for, do, while, etc.
+"     Label        case, default, etc.
+"     Operator     "sizeof", "+", "*", etc.
+"     Keyword      any other keyword
+"     Exception    try, catch, throw
+
+" *PreProc         generic Preprocessor
+"     Include      preprocessor #include
+"     Define       preprocessor #define
+"     Macro        same as Define
+"     PreCondit    preprocessor #if, #else, #endif, etc.
+
+" *Type            int, long, char, etc.
+"     StorageClass static, register, volatile, etc.
+"     Structure    struct, union, enum, etc.
+"     Typedef      A typedef
+
+" *Special         any special symbol
+"     SpecialChar   special character in a constant
+"     Tag          you can use CTRL-] on this
+"     Delimiter    character that needs attention
+"     SpecialComment special things inside a comment
+"     Debug        debugging statements
+
+" *Underlined      text that stands out, HTML links
+
+" *Ignore          left blank, hidden  |hl-Ignore|
+
+" *Error           any erroneous construct
+
+" *Todo            anything that needs extra attention;
+"                  mostly the
+"                  keywords TODO FIXME and XXX
+"
+" and attributes are one of ctermbg and ctermfg (for background and
+" foreground)
+" Colors are one of: 
+" NR-16   NR-8    COLOR NAME 
+" 0       0       Black
+" 1       4       DarkBlue
+" 2       2       DarkGreen
+" 3       6       DarkCyan
+" 4       1       DarkRed
+" 5       5       DarkMagenta
+" 6       3       Brown, DarkYellow
+" 7       7       LightGray, LightGrey, Gray, Grey
+" 8       0*      DarkGray, DarkGrey
+" 9       4*      Blue, LightBlue
+" 10      2*      Green, LightGreen
+" 11      6*      Cyan, LightCyan
+" 12      1*      Red, LightRed
+" 13      5*      Magenta, LightMagenta
+" 14      3*      Yellow, LightYellow
+" 15      7*      White
+" You can also use the numbers from this:
+" https://upload.wikimedia.org/wikipedia/commons/1/15/Xterm_256color_chart.svg
+" Turn the one to a zero if you want a white background
+" :if 0
+"     highlight Comment ctermbg=Black ctermfg=040
+"     highlight Constant ctermbg=Black ctermfg=033
+"     highlight Identifier ctermbg=Black ctermfg=White
+"     highlight Statement ctermbg=Black ctermfg=White
+"     highlight PreProc ctermbg=Black ctermfg=027
+"     highlight Type ctermbg=Black ctermfg=033
+"     highlight Special ctermbg=Black ctermfg=White
+"     highlight Underlined ctermbg=Black ctermfg=033
+"     highlight Todo ctermbg=Black ctermfg=Red
+"     highlight String ctermbg=Black ctermfg=040
+"     highlight Normal ctermbg=Black ctermfg=White
+"     syntax enable
+" :else
+"     highlight Comment ctermbg=White ctermfg=040
+"     highlight Constant ctermbg=White ctermfg=033
+"     highlight Identifier ctermbg=White ctermfg=Black
+"     highlight Statement ctermbg=White ctermfg=Black
+"     highlight PreProc ctermbg=White ctermfg=027
+"     highlight Type  ctermbg=White ctermfg=033
+"     highlight Special ctermbg=White ctermfg=Black
+"     highlight Underlined ctermbg=White ctermfg=033
+"     highlight Todo ctermbg=White ctermfg=Red
+"     highlight String ctermbg=White ctermfg=040
+"     highlight Normal ctermbg=White ctermfg=Black
+"     syntax enable
+" :endif
+
+" ==========================================================================
+" The following commands load in the mustang colors and are necessary in order
+" to ensure that the background loads correctly on the first try
+" ==========================================================================
+" set termguicolors " Set the terminal to use every single color there is
+" set t_ut= " This option will prevent only half the background from preloading
+" colorscheme mustang " A cool color option for general purpose coding
+colorscheme nord " One of the most beautiful color codings in fronst
+" colorscheme mark_light
+" colorscheme mark_dark
