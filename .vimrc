@@ -4,7 +4,7 @@
 " Mark Kurzeja 2019
 " ==========================================================================
 "
-
+" ==========================================================================
 " If you are cloning this for the first time, you need to run the following
 " commands once after downloading the files from git (if you cloned this
 " repository then you shouldn't have any issues with this):
@@ -25,6 +25,14 @@ nnoremap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>
 set showmode
 
+" Sometimes using the [e and ]e commands for moving lines is hard to remember
+" so I am remapping them to the Control + Shift + Up/Down arrow commands so
+" that they are more in line with my Notepad++ experience
+nnoremap <C-S-Up> :move -2<CR>
+inoremap <C-S-Up> <esc>:move -2<CR>
+nnoremap <C-S-Down> :move +1<CR>
+inoremap <C-S-Down> <esc>:move +1<CR>
+
 " For backspacing a word at a time, remap ^w to ^<backspace>
 noremap! <C-BS> <C-W>
 noremap! <C-h> <C-W>
@@ -39,7 +47,7 @@ noremap! <C-h> <C-W>
 :nnoremap sc :so $MYVIMRC<CR>
 
 " Functions for testing the payment modules
-:nnoremap :test :w<esc> :!clear; python3 test.py -v <esc>
+:nnoremap :test :w<esc> :!clear; python3 test_model.py -v <esc>
 
 " Ensure that folding is only done on manual selections
 :setlocal foldmethod=manual
@@ -52,7 +60,7 @@ noremap! <C-h> <C-W>
 set nocursorcolumn
 set nocursorline
 syntax sync minlines=256
-set synmaxcol=120
+set synmaxcol=200
 
 " ==========================================================================
 " This is all of the snips that I have for insertion
@@ -94,12 +102,13 @@ inoremap :env<space> <esc>:-1read ~/vim_snips/enviroment<CR>7li
 " [oh turns on highlighting ]oh turns it off
 " dt. will delete everything up till the next period
 " f. will find the next period in the line ; and , will move through the line
-" ci) will change everything within the current parents
+" ci) will change everything within the current parens
 " cs(] will change the current () text to [] text 
 " ds) will delete the current surrounding ()
 " Highlight + S) will surround the current selection with ()
 " [<space> will insert a blank line before the current line
 " [e will move the current line up one
+" :tabedit <filename> will open the next file in a tabbed view
 " gt and gT will cycle between tabs
 " :vsp will open up a new window in vertical split
 " ^w < will go to the left in a vertical split
@@ -275,6 +284,21 @@ set showbreak=>>
 nnoremap <expr> j v:count ? 'j' : 'gj'
 nnoremap <expr> k v:count ? 'k' : 'gk'
 
+" Ensure that split banes are brought to the right and to the bottom which is a
+" more natural default than Vims current
+set splitbelow
+set splitright
+
+" Setting the wildmenu option which acts as an autocomplete for vim commands!
+set wildmenu
+set wildmode=longest:full,full
+
+" Set the font to Monaco for the purposes of the terminal
+set guifont=Monaco:h16
+
+" Testing the options below to see if there is any difference
+set guioptions-=T guioptions-=e guioptions-=L guioptions-=r
+set shell=bash
 " ==========================================================================
 " Set the relative line numbers on
 " ==========================================================================
