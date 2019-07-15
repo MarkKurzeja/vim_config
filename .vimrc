@@ -3,7 +3,14 @@
 " Vim language Whoohoo!
 " Mark Kurzeja 2019
 " ==========================================================================
-"
+" The default font for this project is set to Fira Code which is a font
+" package that contains many ligatures that are awesome for coders and make
+" life a lot easier! You can get Fira Code Here:
+" If downloading the ttf files (mainly a Windows issue)
+" https://github.com/tonsky/FiraCode/tree/master/distr/ttf
+" Or if downloading for Gvim / Linux:
+" https://github.com/tonsky/FiraCode and go to the install page located here:
+" https://github.com/tonsky/FiraCode/wiki
 " ==========================================================================
 " If you are cloning this for the first time, you need to run the following
 " commands once after downloading the files from git (if you cloned this
@@ -12,7 +19,6 @@
 " vim -u NONE -c "helptags !/.vim/pack/tpope/start/surround/doc" -c q
 " vim -u NONE -c "helptags !/.vim/pack/tpope/start/unimpaired/doc" -c q
 " Doing this will ensure that the tpope scripts work as they should!
-
 " ==========================================================================
 " Custom Commands!!!!
 " ==========================================================================
@@ -47,6 +53,7 @@ noremap! <C-h> <C-W>
 :nnoremap sc :so $MYVIMRC<CR>
 
 " Functions for testing the payment modules
+:nnoremap :run :w<esc> :!clear; python3 model.py <esc>
 :nnoremap :test :w<esc> :!clear; python3 test_model.py -v <esc>
 
 " Ensure that folding is only done on manual selections
@@ -60,7 +67,8 @@ noremap! <C-h> <C-W>
 set nocursorcolumn
 set nocursorline
 syntax sync minlines=256
-set synmaxcol=200
+syntax sync maxlines=256
+set synmaxcol=500
 
 " ==========================================================================
 " This is all of the snips that I have for insertion
@@ -253,6 +261,7 @@ set undolevels=1000      " use many muchos levels of undo
 set wildignore=*.swp,*.bak,*.pyc,*.class
 set title                " change the terminal's title
 set visualbell           " don't beep
+set t_vb=                " Don't let the cursor blink [cust]
 set noerrorbells         " don't beep
 
 " Easy window navigation - don't have to use Ctrlw + l anymore
@@ -292,9 +301,6 @@ set splitright
 " Setting the wildmenu option which acts as an autocomplete for vim commands!
 set wildmenu
 set wildmode=longest:full,full
-
-" Set the font to Monaco for the purposes of the terminal
-set guifont=Monaco:h16
 
 " Testing the options below to see if there is any difference
 set guioptions-=T guioptions-=e guioptions-=L guioptions-=r
