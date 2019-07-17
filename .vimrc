@@ -3,6 +3,7 @@
 " Vim language Whoohoo!
 " Mark Kurzeja 2019
 " ==========================================================================
+" First edit from G machine
 " The default font for this project is set to Fira Code which is a font
 " package that contains many ligatures that are awesome for coders and make
 " life a lot easier! You can get Fira Code Here:
