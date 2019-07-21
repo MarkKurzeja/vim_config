@@ -3,4 +3,4 @@
 " source them when I need them and not need to worry about version control
 " messing up my actual VIMRC code when it conflicts with work settings
 
-source ~/.marks_vimrc
+source ~/marks_vimrc
