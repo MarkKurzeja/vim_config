@@ -41,7 +41,7 @@ set showmode
 " DEBUG(): < This Text Should not be highlighted > 
 " DEBUG(alkjdl adslkjf 4): < This Text Should not be highlighted > 
 " DEBUG:(alkjdl adslkjf 4) < This Text Should not be highlighted > 
-:match todo /\(TODO\|OPTIM\|XXX\|DEBUG\|NOTE\)\:\?\( \|([^)]*)\:\?\)/
+:match todo /\(TODO\|OPTIM\|XXX\|DEBUG\|NOTE\|FIX\)\:\?\( \|([^)]*)\:\?\)/
 
 " Sometimes using the [e and ]e commands for moving lines is hard to remember
 " so I am remapping them to the Control + Shift + Up/Down arrow commands so
