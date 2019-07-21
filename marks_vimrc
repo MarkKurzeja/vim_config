@@ -33,6 +33,16 @@ nnoremap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>
 set showmode
 
+" Adding some additional phrases for highlighting - it should match all of the
+" following tidbits
+" DEBUG < This Text Should not be highlighted > 
+" DEBUG: < This Text Should not be highlighted > 
+" DEBUG:(blueberry) < This Text Should not be highlighted > 
+" DEBUG(): < This Text Should not be highlighted > 
+" DEBUG(alkjdl adslkjf 4): < This Text Should not be highlighted > 
+" DEBUG:(alkjdl adslkjf 4) < This Text Should not be highlighted > 
+:match todo /\(TODO\|OPTIM\|XXX\|DEBUG\|NOTE\)\:\?\( \|([^)]*)\:\?\)/
+
 " Sometimes using the [e and ]e commands for moving lines is hard to remember
 " so I am remapping them to the Control + Shift + Up/Down arrow commands so
 " that they are more in line with my Notepad++ experience
@@ -72,6 +82,10 @@ set nocursorline
 syntax sync minlines=256
 syntax sync maxlines=256
 set synmaxcol=500
+
+" Comments for React !
+nnoremap :com I{/*<esc>A*/}<esc>
+vnoremap :com di{/**/}<esc>2hi<CR><esc>3"_dhk$p
 
 " ==========================================================================
 " This is all of the snips that I have for insertion
