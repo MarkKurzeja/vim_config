@@ -10,3 +10,9 @@
 .sudo_as_admin_successful
 .viminfo
 .vim/.netrwhist
+.Xauthority
+.config
+.ssh
+.vim/pack/tpope/start/commentary/.gitignore
+.vim/pack/tpope/start/surround/.gitignore
+.vim/pack/tpope/start/unimpaired/.gitignore
