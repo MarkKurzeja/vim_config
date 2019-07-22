@@ -25,6 +25,12 @@
 " Custom Commands!!!!
 " ==========================================================================
 
+" Create a command to replace all instances of the highlighted text with
+" something else qr = quick replace
+" For the command in normal mode: need to type old_phrase/new_phrase
+vnoremap qr y<esc>:%s/<c-r>"//g<left><left>
+nnoremap qr y<esc>:%s//g<left><left>
+
 " This must be first, because it changes other options as side effect
 set nocompatible
 
@@ -101,6 +107,9 @@ inoremap :env<space> <esc>:-1read ~/vim_snips/enviroment<CR>7li
 
 " ======== Short list of useful commands ======== 
 
+" You can use qr in visual mode to replace the highlighted instance and 
+" you can use qr in normal mode with old_phrase/new_phrase to replace active
+" non-highlighted words
 " Use the { and } keys to move around paragraphs
 " ^<BS> while in insert mode, will delete the last word
 " Use ^l/^h to go to the window to the right/left using new bindings
