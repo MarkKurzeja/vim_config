@@ -2,8 +2,6 @@
 " This is the list of my common mappings for writing files In and out of the
 " Vim language Whoohoo!
 " Mark Kurzeja 2019
-" Second test
-" Testing a line for the auto commit
 " ==========================================================================
 " The default font for this project is set to Fira Code which is a font
 " package that contains many ligatures that are awesome for coders and make
