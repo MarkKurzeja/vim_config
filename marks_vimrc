@@ -3,6 +3,7 @@
 " Vim language Whoohoo!
 " Mark Kurzeja 2019
 " ==========================================================================
+
 " The default font for this project is set to Fira Code which is a font
 " package that contains many ligatures that are awesome for coders and make
 " life a lot easier! You can get Fira Code Here:
@@ -11,7 +12,9 @@
 " Or if downloading for Gvim / Linux:
 " https://github.com/tonsky/FiraCode and go to the install page located here:
 " https://github.com/tonsky/FiraCode/wiki
+
 " ==========================================================================
+
 " If you are cloning this for the first time, you need to run the following
 " commands once after downloading the files from git (if you cloned this
 " repository then you shouldn't have any issues with this):
@@ -21,6 +24,7 @@
 " vim -u NONE -c "helptags !/.vim/pack/tpope/start/surround/doc" -c q
 " vim -u NONE -c "helptags !/.vim/pack/tpope/start/unimpaired/doc" -c q
 " Doing this will ensure that the tpope scripts work as they should!
+
 " ==========================================================================
 " Custom Commands!!!!
 " ==========================================================================
@@ -31,9 +35,15 @@ let g:netrw_banner = 0 " Remove the banner
 let g:netrw_liststyle = 3 " Set it to tree mode
 let g:netrw_browse_split = 2 " Open new files in new vertical split
 
-" Change the cursor to a block in normal mode and a bar in insert mode
+" Change the cursor to a block in normal mode and a pipe in insert mode This
+" works for Linux :)
 let &t_SI = "\<Esc>]50;CursorShape=1\x7" " Vertical bar in insert mode
 let &t_EI = "\<Esc>]50;CursorShape=0\x7" " Block in normal mode
+
+" For my windows terminal, the above cursor treatment does not work
+let &t_SI = "\<esc>[5 q"  " blinking I-beam in insert mode
+let &t_SR = "\<esc>[3 q"  " blinking underline in replace mode
+let &t_EI = "\<esc>[ q"  " default cursor (usually blinking block) otherwise
 
 " Create a command to replace all instances of the highlighted text with
 " something else qr = quick replace
@@ -77,7 +87,6 @@ noremap! <C-h> <C-W>
 
 " For quickly editing the VIMRC file - these allow you to quickly improve the
 " editor and get the hell out!
-" :nnoremap ec :vsp $MYVIMRC<CR> 
 :nnoremap ec :vsp ~/marks_vimrc<CR> 
 :nnoremap sc :so $MYVIMRC<CR>
 
@@ -114,7 +123,6 @@ map <C-l> <C-w>l
 
 " In go/vim, Natesvim has some interesting defaults - pulling them in now
 set ttyfast lazyredraw          " Make drawing faster.
-set visualbell                  " Don't make noise.
 set clipboard=unnamed           " Allow vim to use the X clipboard.
 set formatoptions=cqn1j         " See :help fo-table.
 set undofile                    " Saves undo history across sessions.
@@ -124,6 +132,7 @@ set viewoptions=cursor,folds    " Save cursor position and folds.
 " Be safe - enable backups! 
 " https://gist.github.com/nepsilon/003dd7cfefc20ce1e894db9c94749755
 " ==========================================================================
+
 "Turn on backup option
 set backup
 
@@ -308,15 +317,13 @@ set softtabstop=4
 " will make life a little easier
 " https://nvie.com/posts/how-i-boosted-my-vim/
 " ==========================================================================
+
 set hidden        " Hides buffers instead of closing them so if you have
                   " unwritten changes to a file, you can open new files still
 set nowrap        " don't wrap lines
 set tabstop=4     " a tab is four spaces
-set backspace=indent,eol,start
                     " allow backspacing over everything in insert mode
-set autoindent    " always set autoindenting on
 set copyindent    " copy the previous indentation on autoindenting
-set number        " always show line numbers
 set shiftwidth=4  " number of spaces to use for autoindenting
 set shiftround    " use multiple of shiftwidth when indenting with '<' and '>'
 set showmatch     " set show matching parenthesis
@@ -328,7 +335,6 @@ set smarttab      " insert tabs on the start of a line according to
 set hlsearch      " highlight search terms
 set incsearch     " show search matches as you type
 
-set history=1000         " remember more commands and search history
 set undolevels=1000      " use many muchos levels of undo
 set wildignore=*.swp,*.bak,*.pyc,*.class
 set title                " change the terminal's title
