@@ -41,9 +41,22 @@ let &t_SI = "\<Esc>]50;CursorShape=1\x7" " Vertical bar in insert mode
 let &t_EI = "\<Esc>]50;CursorShape=0\x7" " Block in normal mode
 
 " For my windows terminal, the above cursor treatment does not work
-let &t_SI = "\<esc>[5 q"  " blinking I-beam in insert mode
-let &t_SR = "\<esc>[3 q"  " blinking underline in replace mode
-let &t_EI = "\<esc>[ q"  " default cursor (usually blinking block) otherwise
+" let &t_SI = "\<esc>[5 q"  " blinking I-beam in insert mode
+" let &t_SR = "\<esc>[3 q"  " blinking underline in replace mode
+" let &t_EI = "\<esc>[ q"  " default cursor (usually blinking block) otherwise
+
+" Fixing the terminal for Gnome
+" https://vim.fandom.com/wiki/Change_cursor_shape_in_different_modes
+if has("autocmd")
+  au VimEnter,InsertLeave * silent execute '!echo -ne "\e[2 q"' | redraw!
+  au InsertEnter,InsertChange *
+    \ if v:insertmode == 'i' |
+    \   silent execute '!echo -ne "\e[6 q"' | redraw! |
+    \ elseif v:insertmode == 'r' |
+    \   silent execute '!echo -ne "\e[4 q"' | redraw! |
+    \ endif
+  au VimLeave * silent execute '!echo -ne "\e[ q"' | redraw!
+endif
 
 " Create a command to replace all instances of the highlighted text with
 " something else qr = quick replace
@@ -91,8 +104,8 @@ noremap! <C-h> <C-W>
 :nnoremap sc :so $MYVIMRC<CR>
 
 " Functions for testing the payment modules
-:nnoremap :run :w<esc> :!clear; python3 model.py <esc>
-:nnoremap :test :w<esc> :!clear; python3 test_model.py -v <esc>
+" :nnoremap :run :w<esc> :!clear; python3 model.py <esc>
+" :nnoremap :test :w<esc> :!clear; python3 test_model.py -v <esc>
 
 " Ensure that folding is only done on manual selections
 :setlocal foldmethod=manual
@@ -161,7 +174,8 @@ inoremap :iim<space> <esc>:-1read ~/vim_snips/itemdesc<CR>6li
 inoremap :env<space> <esc>:-1read ~/vim_snips/enviroment<CR>7li
 
 " ======== Short list of useful commands ======== 
-
+"
+" Ctrl + wT opens the current split in its own tab
 " You can use qr in visual mode to replace the highlighted instance and 
 " you can use qr in normal mode with old_phrase/new_phrase to replace active
 " non-highlighted words
@@ -309,7 +323,7 @@ inoremap <C-U> <C-G>u<C-U>
 " ==========================================================================
 
 " On pressing tab, insert 4 spaces for python files
-autocmd filetype python set expandtab
+set expandtab
 set softtabstop=4
 
 " ==========================================================================
@@ -347,6 +361,7 @@ set noerrorbells         " don't beep
 " as their indentation 
 " ==========================================================================
 " enable indentation
+set smartindent
 set breakindent
 set linebreak
 
@@ -377,6 +392,7 @@ set wildmode=longest:full,full
 " Testing the options below to see if there is any difference
 set guioptions-=T guioptions-=e guioptions-=L guioptions-=r
 set shell=bash
+
 " ==========================================================================
 " Set the relative line numbers on
 " ==========================================================================
@@ -481,7 +497,6 @@ set shell=bash
 " *]T*     |:tlast|
 " *[<C-T>* |:ptprevious|
 " *]<C-T>* |:ptnext|
-
 
 " ==========================================================================
 " Specify the colors for the formatting of files
