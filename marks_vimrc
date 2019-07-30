@@ -59,18 +59,11 @@ elseif username == "mark\n"
     let &t_EI = "\<Esc>]50;CursorShape=0\x7" " Block in normal mode
 elseif username == "markkurzeja\n"
     echo "This is my work computer"
-    " Fixing the terminal for Gnome
+    " Fixing the terminal for Gnome - this is confirmed to work
     " https://vim.fandom.com/wiki/Change_cursor_shape_in_different_modes
-    if has("autocmd")
-        au VimEnter,InsertLeave * silent execute '!echo -ne "\e[2 q"' | redraw!
-        au InsertEnter,InsertChange *
-            \ if v:insertmode == 'i' |
-            \   silent execute '!echo -ne "\e[6 q"' | redraw! |
-            \ elseif v:insertmode == 'r' |
-            \   silent execute '!echo -ne "\e[4 q"' | redraw! |
-            \ endif
-        au VimLeave * silent execute '!echo -ne "\e[ q"' | redraw!
-    endif
+    let &t_SI = "\<esc>[6 q"  " blinking I-beam in insert mode
+    let &t_SR = "\<esc>[4 q"  " blinking underline in replace mode
+    let &t_EI = "\<esc>[2 q"  " default cursor (usually blinking block) otherwise
 else 
     echo "WARNING: This computer has not been given an identity"
 endif
@@ -97,6 +90,7 @@ set showmode
 " DEBUG(): < This Text Should not be highlighted > 
 " DEBUG(alkjdl adslkjf 4): < This Text Should not be highlighted > 
 " DEBUG:(alkjdl adslkjf 4) < This Text Should not be highlighted > 
+silent! sign undefine Todo
 :match Todo /\(TODO\|OPTIM\|XXX\|DEBUG\|NOTE\|FIX\)\:\?\( \|([^)]*)\:\?\)/
 
 " Sometimes using the [e and ]e commands for moving lines is hard to remember
