@@ -104,8 +104,8 @@ noremap! <C-h> <C-W>
 :nnoremap sc :so $MYVIMRC<CR>
 
 " Functions for testing the payment modules
-:nnoremap :run :w<esc> :!clear; python3 model.py <esc>
-:nnoremap :test :w<esc> :!clear; python3 test_model.py -v <esc>
+" :nnoremap :run :w<esc> :!clear; python3 model.py <esc>
+" :nnoremap :test :w<esc> :!clear; python3 test_model.py -v <esc>
 
 " Ensure that folding is only done on manual selections
 :setlocal foldmethod=manual
@@ -174,7 +174,8 @@ inoremap :iim<space> <esc>:-1read ~/vim_snips/itemdesc<CR>6li
 inoremap :env<space> <esc>:-1read ~/vim_snips/enviroment<CR>7li
 
 " ======== Short list of useful commands ======== 
-
+"
+" Ctrl + wT opens the current split in its own tab
 " You can use qr in visual mode to replace the highlighted instance and 
 " you can use qr in normal mode with old_phrase/new_phrase to replace active
 " non-highlighted words
@@ -322,7 +323,7 @@ inoremap <C-U> <C-G>u<C-U>
 " ==========================================================================
 
 " On pressing tab, insert 4 spaces for python files
-autocmd filetype python set expandtab
+set expandtab
 set softtabstop=4
 
 " ==========================================================================
@@ -360,6 +361,7 @@ set noerrorbells         " don't beep
 " as their indentation 
 " ==========================================================================
 " enable indentation
+set smartindent
 set breakindent
 set linebreak
 
@@ -390,6 +392,7 @@ set wildmode=longest:full,full
 " Testing the options below to see if there is any difference
 set guioptions-=T guioptions-=e guioptions-=L guioptions-=r
 set shell=bash
+
 " ==========================================================================
 " Set the relative line numbers on
 " ==========================================================================
@@ -494,7 +497,6 @@ set shell=bash
 " *]T*     |:tlast|
 " *[<C-T>* |:ptprevious|
 " *]<C-T>* |:ptnext|
-
 
 " ==========================================================================
 " Specify the colors for the formatting of files
