@@ -186,6 +186,7 @@ inoremap :env<space> <esc>:-1read ~/vim_snips/enviroment<CR>7li
 
 " ======== Short list of useful commands ======== 
 "
+" * when you are over a word will search the current doc for that word
 " Ctrl + wT opens the current split in its own tab
 " You can use qr in visual mode to replace the highlighted instance and 
 " you can use qr in normal mode with old_phrase/new_phrase to replace active
