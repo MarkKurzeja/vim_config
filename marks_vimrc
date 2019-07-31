@@ -18,8 +18,7 @@
 " If you are cloning this for the first time, you need to run the following
 " commands once after downloading the files from git (if you cloned this
 " repository then you shouldn't have any issues with this):
-" Note: you can also just cd to .vim/pack/tpope/start so you don't have to type
-" that part of the path
+" Note: you can also just cd to .vim/pack/tpope/start so you don't have to type that part of the path
 " vim -u NONE -c "helptags !/.vim/pack/tpope/start/commentary/doc" -c q
 " vim -u NONE -c "helptags !/.vim/pack/tpope/start/surround/doc" -c q
 " vim -u NONE -c "helptags !/.vim/pack/tpope/start/unimpaired/doc" -c q
@@ -37,20 +36,20 @@ let g:netrw_browse_split = 2 " Open new files in new vertical split
 " Change the cursor to a block in normal mode and a pipe in insert mode This
 " works for Linux :)
 let altusername = system("echo $HOSTNAME")
-echo altusername
+" echo altusername
 let username = system("whoami")
 if altusername == "DESKTOP-KGEQVSP\n"
-    echo "This is my home desktop"
+    " echo "This is my home desktop"
 elseif username == "mark\n"
     " For my windows terminal, the above cursor treatment does not work
-    echo "This is my laptop"
+    " echo "This is my laptop"
     let &t_SI = "\<Esc>]50;CursorShape=1\x7" " Vertical bar in insert mode
     let &t_EI = "\<Esc>]50;CursorShape=0\x7" " Block in normal mode
     " let &t_SI = "\<esc>[5 q"  " blinking I-beam in insert mode
     " let &t_SR = "\<esc>[3 q"  " blinking underline in replace mode
     " let &t_EI = "\<esc>[ q"  " default cursor (usually blinking block) otherwise
 elseif altusername == "markkurzeja.mtv.corp.google.com\n"
-    echo "This is my work computer"
+    " echo "This is my work computer"
     " Fixing the terminal for Gnome - this is confirmed to work
     " https://vim.fandom.com/wiki/Change_cursor_shape_in_different_modes
     let &t_SI = "\<esc>[6 q"  " blinking I-beam in insert mode
@@ -82,7 +81,6 @@ set showmode
 " DEBUG(): < This Text Should not be highlighted > 
 " DEBUG(alkjdl adslkjf 4): < This Text Should not be highlighted > 
 " DEBUG:(alkjdl adslkjf 4) < This Text Should not be highlighted > 
-silent! sign undefine Todo
 :match Todo /\(TODO\|OPTIM\|XXX\|DEBUG\|NOTE\|FIX\)\:\?\( \|([^)]*)\:\?\)/
 
 " Sometimes using the [e and ]e commands for moving lines is hard to remember
