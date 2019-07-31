@@ -4,6 +4,20 @@
 " Mark Kurzeja 2019
 " ==========================================================================
 
+" The following commands load in the mustang colors and are necessary in order
+" to ensure that the background loads correctly on the first try Don't use the
+" termguicolors option nor the t_ut option with my custom color schemes else
+" it will not work. You can use them safely with the mustang and nord sets
+" however
+
+" set termguicolors " Set the terminal to use every single color there is
+" The t_ut option will prevent only half the background from preloading
+" set t_ut= 
+" colorscheme mustang " A cool color option for general purpose coding
+" colorscheme nord " One of the most beautiful color codings in Frost Coloring
+" colorscheme mark_light
+" colorscheme mark_dark
+
 " The default font for this project is set to Fira Code which is a font
 " package that contains many ligatures that are awesome for coders and make
 " life a lot easier! You can get Fira Code Here:
@@ -611,17 +625,3 @@ set shell=bash
 "     syntax enable
 " :endif
 
-" ==========================================================================
-" The following commands load in the mustang colors and are necessary in order
-" to ensure that the background loads correctly on the first try Don't use the
-" termguicolors option nor the t_ut option with my custom color schemes else
-" it will not work. You can use them safely with the mustang and nord sets
-" however
-" ==========================================================================
-" set termguicolors " Set the terminal to use every single color there is
-" The t_ut option will prevent only half the background from preloading
-" set t_ut= 
-" colorscheme mustang " A cool color option for general purpose coding
-colorscheme nord " One of the most beautiful color codings in Frost Coloring
-" colorscheme mark_light
-" colorscheme mark_dark
