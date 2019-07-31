@@ -14,7 +14,7 @@
 " The t_ut option will prevent only half the background from preloading
 " set t_ut= 
 " colorscheme mustang " A cool color option for general purpose coding
-" colorscheme nord " One of the most beautiful color codings in Frost Coloring
+colorscheme nord " One of the most beautiful color codings in Frost Coloring
 " colorscheme mark_light
 " colorscheme mark_dark
 
