@@ -49,7 +49,7 @@ elseif username == "mark\n"
     " let &t_SI = "\<esc>[5 q"  " blinking I-beam in insert mode
     " let &t_SR = "\<esc>[3 q"  " blinking underline in replace mode
     " let &t_EI = "\<esc>[ q"  " default cursor (usually blinking block) otherwise
-elseif username == "markkurzeja\n"
+elseif altusername == "markkurzeja.mtv.corp.google.com\n"
     echo "This is my work computer"
     " Fixing the terminal for Gnome - this is confirmed to work
     " https://vim.fandom.com/wiki/Change_cursor_shape_in_different_modes
