@@ -50,6 +50,9 @@ let g:netrw_browse_split = 2 " Open new files in new vertical split
 " Change the cursor to a block in normal mode and a pipe in insert mode This
 " works for Linux :)
 let username = system("echo $HOSTNAME")
+" Use the machine-id hashed to identify the machine that I am on :)
+let uniqueUserName = system("cat /etc/machine-id | sha256sum | cut -c1-10")
+
 if username == "DESKTOP-KGEQVSP\n"
     " echo "This is my home desktop"
     " So far I don't know how to get the cursor to the way that I want it to
@@ -59,7 +62,7 @@ elseif username == "LAPTOP-NM2PD39S\n"
     let &t_SI = "\<esc>[6 q"  " blinking I-beam in insert mode
     let &t_SR = "\<esc>[4 q"  " blinking underline in replace mode
     let &t_EI = "\<esc>[2 q"  " default cursor (usually blinking block) otherwise
-elseif username == "markkurzeja.mtv.corp.google.com\n"
+elseif uniqueUserName == "9d2f8d1e07\n"
     " echo "This is my work computer"
     " Fixing the terminal for Gnome - this is confirmed to work
     " https://vim.fandom.com/wiki/Change_cursor_shape_in_different_modes
