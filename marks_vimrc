@@ -122,7 +122,12 @@ noremap! <C-h> <C-W>
 " Ensure that folding is only done on manual selections
 :setlocal foldmethod=manual
 
-" For making the syntax highlighting go faster (since this is what is slowing
+" Create a paste command that deletes the current word and can be ran multiple
+" times
+nnoremap ;p viw"_dP 
+vnoremap ;p "_dP 
+
+" For making the the highlighting go faster (since this is what is slowing
 " down my machine right now!)
 " For future me - either you have to :set norelativenumbering or turn off
 " syntax highlighting to get the desired effect - it will be slow unless you
@@ -187,6 +192,8 @@ inoremap :env<space> <esc>:-1read ~/vim_snips/enviroment<CR>7li
 
 " ======== Short list of useful commands ======== 
 "
+" ;p will take the current paste selection and paste over the current word or
+" highlight
 " * when you are over a word will search the current doc for that word
 " Ctrl + wT opens the current split in its own tab
 " You can use qr in visual mode to replace the highlighted instance and 
