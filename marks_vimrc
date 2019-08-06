@@ -12,7 +12,7 @@
 
 " set termguicolors " Set the terminal to use every single color there is
 " The t_ut option will prevent only half the background from preloading
-" set t_ut= 
+" set t_ut=
 " colorscheme mustang " A cool color option for general purpose coding
 colorscheme nord " One of the most beautiful color codings in Frost Coloring
 " colorscheme mark_light
@@ -69,7 +69,7 @@ elseif uniqueUserName == "9d2f8d1e07\n"
     let &t_SI = "\<esc>[6 q"  " blinking I-beam in insert mode
     let &t_SR = "\<esc>[4 q"  " blinking underline in replace mode
     let &t_EI = "\<esc>[2 q"  " default cursor (usually blinking block) otherwise
-else 
+else
     echo "!!!! WARNING: This computer has not been given an identity !!!!"
 endif
 
@@ -89,12 +89,12 @@ set showmode
 
 " Adding some additional phrases for highlighting - it should match all of the
 " following tidbits
-" DEBUG < This Text Should not be highlighted > 
-" DEBUG: < This Text Should not be highlighted > 
-" DEBUG:(blueberry) < This Text Should not be highlighted > 
-" DEBUG(): < This Text Should not be highlighted > 
-" DEBUG(alkjdl adslkjf 4): < This Text Should not be highlighted > 
-" DEBUG:(alkjdl adslkjf 4) < This Text Should not be highlighted > 
+" DEBUG < This Text Should not be highlighted >
+" DEBUG: < This Text Should not be highlighted >
+" DEBUG:(blueberry) < This Text Should not be highlighted >
+" DEBUG(): < This Text Should not be highlighted >
+" DEBUG(alkjdl adslkjf 4): < This Text Should not be highlighted >
+" DEBUG:(alkjdl adslkjf 4) < This Text Should not be highlighted >
 :match Todo /\(TODO\|OPTIM\|XXX\|DEBUG\|NOTE\|FIX\)\:\?\( \|([^)]*)\:\?\)/
 
 " Sometimes using the [e and ]e commands for moving lines is hard to remember
@@ -127,8 +127,8 @@ noremap! <C-h> <C-W>
 
 " Create a paste command that deletes the current word and can be ran multiple
 " times
-nnoremap ;p viw"_dP 
-vnoremap ;p "_dP 
+nnoremap ;p viw"_dP
+vnoremap ;p "_dP
 
 " For making the the highlighting go faster (since this is what is slowing
 " down my machine right now!)
@@ -162,7 +162,7 @@ set undofile                    " Saves undo history across sessions.
 set viewoptions=cursor,folds    " Save cursor position and folds.
 
 " ==========================================================================
-" Be safe - enable backups! 
+" Be safe - enable backups!
 " https://gist.github.com/nepsilon/003dd7cfefc20ce1e894db9c94749755
 " ==========================================================================
 
@@ -193,13 +193,13 @@ inoremap :citem<space> <esc>:-1read ~/vim_snips/compactitem<CR>jA
 inoremap :iim<space> <esc>:-1read ~/vim_snips/itemdesc<CR>6li
 inoremap :env<space> <esc>:-1read ~/vim_snips/enviroment<CR>7li
 
-" ======== Short list of useful commands ======== 
+" ======== Short list of useful commands ========
 "
 " ;p will take the current paste selection and paste over the current word or
 " highlight
 " * when you are over a word will search the current doc for that word
 " Ctrl + wT opens the current split in its own tab
-" You can use qr in visual mode to replace the highlighted instance and 
+" You can use qr in visual mode to replace the highlighted instance and
 " you can use qr in normal mode with old_phrase/new_phrase to replace active
 " non-highlighted words
 " Use the { and } keys to move around paragraphs
@@ -213,7 +213,7 @@ inoremap :env<space> <esc>:-1read ~/vim_snips/enviroment<CR>7li
 " zt for pushing the screen, at the cursor to the top
 " zb for pushing the screen, at the cursor to the bottom
 " ^I for beginning to edit at the beginning of a line
-" zf folds the current selection 
+" zf folds the current selection
 " za toggles folds
 " zd deletes the current fold
 " zD deletes the current fold and all sub folds
@@ -229,7 +229,7 @@ inoremap :env<space> <esc>:-1read ~/vim_snips/enviroment<CR>7li
 " dt. will delete everything up till the next period
 " f. will find the next period in the line ; and , will move through the line
 " ci) will change everything within the current parens
-" cs(] will change the current () text to [] text 
+" cs(] will change the current () text to [] text
 " ds) will delete the current surrounding ()
 " Highlight + S) will surround the current selection with ()
 " [<space> will insert a blank line before the current line
@@ -390,11 +390,11 @@ set linebreak
 
 " indent  by an additional 2 characters on wrapped lines, when line >= 40
 " characters, put 'showbreak' at start of line
-" set breakindentopt=shift:2,min:40,sbr 
+" set breakindentopt=shift:2,min:40,sbr
 set breakindentopt=shift:0,min:40,sbr
 
 " append '>>' to indent
-set showbreak=>>   
+set showbreak=>>
 
 " Given that the indenting makes moving around harder on a single long line,
 " you can remap the up and down keys to navigate inter- line and not hop the
@@ -429,7 +429,7 @@ set shell=bash
 " Surround --------------------------------------------------------
 " https://github.com/tpope/vim-surround
 " You can use the cs key tag to change tags, ds to delete tags,
-" and <y|c>s<movement><surround> to add / change the surrounding 
+" and <y|c>s<movement><surround> to add / change the surrounding
 " characters
 "
 " Take line of Hello World with cursor positioned over Hello
@@ -440,7 +440,7 @@ set shell=bash
 " Take Line (Hello World) with cursor over Hello
 " dss) => Hello World
 " cs"' => 'Hello World'
-" 
+"
 " If you highlight text, then you press S<brace char> to insert it
 
 " Commentary -----------------------------------------------------
@@ -448,7 +448,7 @@ set shell=bash
 " gcc to comment out a line
 " gcap to comment out a paragraph
 " gc<movement> to comment out a movement
-" gc while in visual mode to comment out a bunch of text 
+" gc while in visual mode to comment out a bunch of text
 
 " ==========================================================================
 " This is from the vim-unimpaired package by t-pope - these commands are
