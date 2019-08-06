@@ -52,12 +52,12 @@ let g:netrw_browse_split = 2 " Open new files in new vertical split
 let username = system("echo $HOSTNAME")
 " Use the machine-id hashed to identify the machine that I am on :)
 let uniqueUserName = system("cat /etc/machine-id | sha256sum | cut -c1-10")
-
-if username == "DESKTOP-KGEQVSP\n"
+" echo uniqueUserName
+if uniqueUserName == "e3b0c44298\n"
     " echo "This is my home desktop"
     " So far I don't know how to get the cursor to the way that I want it to
     " be so until then I will keep this option like this
-elseif username == "LAPTOP-NM2PD39S\n"
+elseif uniqueUserName == "LAPTOP-NM2PD39S\n"
     " echo "This is my laptop"
     let &t_SI = "\<esc>[6 q"  " blinking I-beam in insert mode
     let &t_SR = "\<esc>[4 q"  " blinking underline in replace mode
