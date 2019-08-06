@@ -347,7 +347,7 @@ inoremap <C-U> <C-G>u<C-U>
 
 " On pressing tab, insert 4 spaces for python files
 set expandtab
-set softtabstop=4
+set softtabstop=2
 
 " ==========================================================================
 " Little goodies from the following post - these are little shortcuts that
@@ -358,10 +358,10 @@ set softtabstop=4
 set hidden        " Hides buffers instead of closing them so if you have
                   " unwritten changes to a file, you can open new files still
 set nowrap        " don't wrap lines
-set tabstop=4     " a tab is four spaces
+set tabstop=2     " a tab is four spaces
                     " allow backspacing over everything in insert mode
 set copyindent    " copy the previous indentation on autoindenting
-set shiftwidth=4  " number of spaces to use for autoindenting
+set shiftwidth=2  " number of spaces to use for autoindenting
 set shiftround    " use multiple of shiftwidth when indenting with '<' and '>'
 set showmatch     " set show matching parenthesis
 set ignorecase    " ignore case when searching
