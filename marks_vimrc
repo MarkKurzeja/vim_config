@@ -69,6 +69,13 @@ elseif uniqueUserName == "9d2f8d1e07\n"
     let &t_SI = "\<esc>[6 q"  " blinking I-beam in insert mode
     let &t_SR = "\<esc>[4 q"  " blinking underline in replace mode
     let &t_EI = "\<esc>[2 q"  " default cursor (usually blinking block) otherwise
+elseif uniqueUserName == "c00ea6a7f1\n"
+    " echo "This is my work laptop"
+    " Fixing the terminal for Gnome - this is confirmed to work
+    " https://vim.fandom.com/wiki/Change_cursor_shape_in_different_modes
+    " let &t_SI = "\<esc>[6 q"  " blinking I-beam in insert mode
+    " let &t_SR = "\<esc>[4 q"  " blinking underline in replace mode
+    " let &t_EI = "\<esc>[2 q"  " default cursor (usually blinking block) otherwise
 else
     echo "!!!! WARNING: This computer has not been given an identity !!!!"
 endif
